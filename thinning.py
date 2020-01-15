@@ -2,18 +2,19 @@
 ===========================
 @Author  : Linbo<linbo.me>
 @Version: 1.0    25/10/2014
+@update by Alvin Chan: 15/1/2020 
 This is the implementation of the 
 Zhang-Suen Thinning Algorithm for skeletonization.
 ===========================
 """
 import matplotlib
 import matplotlib.pyplot as plt
-import skimage.io as io
+import skimage.io as io    # need to update skimage version to 0.15+
 "load image data"
 Img_Original =  io.imread( './data/test1.bmp')      # Gray image, rgb images need pre-conversion
 
 "Convert gray images to binary images using Otsu's method"
-from skimage.filter import threshold_otsu
+from skimage.filters import threshold_otsu     # advance than 0.15+, use skimage.filters
 Otsu_Threshold = threshold_otsu(Img_Original)   
 BW_Original = Img_Original < Otsu_Threshold    # must set object region as 1, background region as 0 !
 
